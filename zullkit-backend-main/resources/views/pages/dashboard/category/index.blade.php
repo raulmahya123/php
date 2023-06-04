@@ -7,31 +7,41 @@
 
     <x-slot name="script">
         <script>
-            // AJAX DataTable
-            var datatable = $('#crudTable').DataTable({
-                ajax: {
-                    url: '{!! url()->current() !!}',
+        // AJAX DataTable
+        var datatable = $('#crudTable').DataTable({
+            ajax: {
+                url: '{!! url()->current() !!}',
+            },
+            columns: [{
+                    data: 'id',
+                    name: 'id',
+                    width: '5%'
                 },
-                columns: [
-                    { data: 'id', name: 'id', width: '5%'},
-                    { data: 'name', name: 'name' },
-                    { data: 'thumbnails', name: 'thumbnails' },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                        width: '25%'
-                    },
-                ],
-            });
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'thumbnails',
+                    name: 'thumbnails'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                    width: '25%'
+                },
+            ],
+        });
         </script>
     </x-slot>
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-10">
-                <a href="{{ route('dashboard.category.create') }}" class="px-4 py-2 font-bold text-white bg-green-500 rounded shadow-lg hover:bg-green-700">
+                <a href="{{ route('dashboard.category.create') }}"
+                    class="px-4 py-2 font-bold text-white bg-green-500 rounded shadow-lg hover:bg-green-700">
                     + Create Category
                 </a>
             </div>
@@ -39,12 +49,12 @@
                 <div class="px-4 py-5 bg-white sm:p-6">
                     <table id="crudTable">
                         <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nama</th>
-                            <th>Thumbnails</th>
-                            <th>Aksi</th>
-                        </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <th>Thumbnails</th>
+                                <th>Aksi</th>
+                            </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
@@ -52,4 +62,7 @@
             </div>
         </div>
     </div>
+
+    <img src="{{ asset('storage/gallery/n9VYbx0u3PbUNCz9RSRJkqOnkKKYaXLVbzvxlpLZ.jpg') }}" alt="Gambar">
+
 </x-app-layout>
